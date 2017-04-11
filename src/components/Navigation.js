@@ -2,18 +2,28 @@ import React, { PureComponent } from 'react'
 import AppBar from 'material-ui/AppBar'
 import Drawer from 'material-ui/Drawer'
 import MenuItem from 'material-ui/MenuItem'
+import FlatButton from 'material-ui/FlatButton';
 import { Link } from 'react-router'
+import signOut from '../actions/user/sign-out';
+import { connect } from 'react-redux'
+
 
 import {
   ROOT_PATH,
   CHAT_PATH,
 } from '../routes'
 
-export default class Navigation extends PureComponent {
+class Navigation extends PureComponent {
   constructor() {
     super()
 
     this.state = { open: false }
+  }
+
+  logOut() {
+    event.preventDefault()
+    console.log('logOut gets called');
+    this.props.signOut()
   }
 
   toggleMenu() {
@@ -28,7 +38,10 @@ export default class Navigation extends PureComponent {
         <AppBar
           title="BattleShip"
           onLeftIconButtonTouchTap={this.toggleMenu.bind(this)}
-          iconClassNameRight="muidocs-icon-navigation-expand-more" />
+          iconClassNameRight="muidocs-icon-navigation-expand-more"
+          iconElementRight={ this.props.signedIn ?  <FlatButton label="Sign Out" onClick={this.logOut.bind(this)} /> : null }
+
+        />
         <Drawer open={this.state.open}>
           <div style={{ paddingTop: 80 }}>
             <Link to={ROOT_PATH} onTouchTap={this.toggleMenu.bind(this)}>
@@ -43,3 +56,8 @@ export default class Navigation extends PureComponent {
     )
   }
 }
+
+const mapStateToProps = ({ currentUser }) => ({
+  signedIn: (!!currentUser._id)
+})
+export default connect(mapStateToProps, { signOut })(Navigation)
