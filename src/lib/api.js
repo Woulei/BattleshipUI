@@ -5,7 +5,12 @@ import feathers from 'feathers-client'
 class API {
   constructor() {
     // Establish a Socket.io connection
+
+    // Use for developing
     const socket = io('http://localhost:3030')
+    // Use for connection with cloud API
+    // const socket = io('http://battleshipsapi.codaisseur.cloud/')
+    
     // Initialize our Feathers client application through Socket.io
     // with hooks and authentication.
     this.app = feathers()
