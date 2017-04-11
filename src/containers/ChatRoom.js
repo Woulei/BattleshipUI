@@ -71,7 +71,7 @@ class ChatRoom extends PureComponent {
               onKeyUp={this.checkForEnter.bind(this)}
               multiLine={true} />
 
-            <RaisedButton disabled={this.props.loading} label="Shut up" primary={true} onClick={this.submitMessage.bind(this)} />
+            <RaisedButton disabled={this.props.loading} label="Fire!" primary={true} onClick={this.submitMessage.bind(this)} />
           </div>
         </div>
       </div>

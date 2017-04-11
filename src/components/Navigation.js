@@ -26,7 +26,7 @@ export default class Navigation extends PureComponent {
     return (
       <div>
         <AppBar
-          title="Shut Up Chat"
+          title="BattleShip"
           onLeftIconButtonTouchTap={this.toggleMenu.bind(this)}
           iconClassNameRight="muidocs-icon-navigation-expand-more" />
         <Drawer open={this.state.open}>
