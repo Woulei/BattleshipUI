@@ -37,6 +37,9 @@ export default class Navigation extends PureComponent {
             <Link to={CHAT_PATH} onTouchTap={this.toggleMenu.bind(this)}>
               <MenuItem>Chat</MenuItem>
             </Link>
+            <Link to='game' onTouchTap={this.toggleMenu.bind(this)}>
+              <MenuItem>Game</MenuItem>
+            </Link>
           </div>
         </Drawer>
       </div>
