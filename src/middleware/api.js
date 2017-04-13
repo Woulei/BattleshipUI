@@ -62,7 +62,7 @@ export default store => next => action => {
 
   if (authenticate) {
     return api.authenticate()
-      .then(() => processRequest(action, apiService, method, params)
+      .then(() => processRequest(action, apiService, method, params, id)
         .then((result) => {
           next({ type: API_READY })
 
