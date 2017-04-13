@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react'
 import Paper from 'material-ui/Paper'
 import RaisedButton from 'material-ui/RaisedButton'
 import { connect } from 'react-redux'
+import { Link } from 'react-router'
 import subscribeToGames from '../actions/games/subscribe'
 import createGame from '../actions/games/create'
 import joinGame from '../actions/games/join'
@@ -44,12 +45,14 @@ class Lobby extends PureComponent {
                     <h4>{ game.title }</h4>
                     <div>
                       { game.playerIds.length < 2 &&
-                        <RaisedButton
-                        onClick={() => {this.props.joinGame(game._id)}}
-                        label="Battle Now!"
-                        labelPosition="before"
-                        secondary={true}
-                        icon={<DirectionsBoat />} />
+                        <Link to={"/game/" + `${game._id}`}>
+                          <RaisedButton
+                          onClick={() => {this.props.joinGame(game._id)}}
+                          label="Battle Now!"
+                          labelPosition="before"
+                          secondary={true}
+                          icon={<DirectionsBoat />} />
+                        </Link>
                       }
                     </div>
                 </Paper>
