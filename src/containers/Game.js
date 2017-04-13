@@ -1,67 +1,35 @@
 import React, { PureComponent } from 'react'
 import './Game.sass'
-
-const playerOneCells = [
-  1,1,1,1,1,1,1,1,1,1,
-  1,1,1,1,1,3,3,3,1,1,
-  1,1,3,1,1,1,1,1,1,1,
-  1,1,1,1,3,1,1,1,1,1,
-  1,1,1,1,3,1,1,1,3,1,
-  1,1,1,1,1,1,1,1,3,1,
-  1,1,1,1,1,1,1,1,3,1,
-  1,1,1,1,1,1,1,1,3,1,
-  1,3,3,3,3,3,1,1,1,1,
-  1,1,1,1,1,1,1,1,1,1
-];
-
-const playerTwoCells = [
-  1,1,1,1,1,1,1,1,1,1,
-  1,1,1,1,1,3,3,3,1,1,
-  1,1,3,1,1,1,1,1,1,1,
-  1,1,1,1,3,1,1,1,1,1,
-  1,1,1,1,3,1,1,1,3,1,
-  1,1,1,1,1,1,1,1,3,1,
-  1,1,1,1,1,1,1,1,3,1,
-  1,1,1,1,1,1,1,1,3,1,
-  1,3,3,3,3,3,1,1,1,1,
-  1,1,1,1,1,1,1,1,1,1
-];
+import { connect } from 'react-redux'
+import Grid from './Grid'
 
 class Game extends PureComponent {
-
-  renderGrid(player) {
-    switch (player) {
-      case "two":
-        return playerTwoCells.map((cell, index) => {
-          console.log(cell);
-          return (<div key={index} className={`cell status${cell}`}>{index + 1}</div>)
-        })
-      default:
-      return playerOneCells.map((cell, index) => {
-        return (<div key={index} className={`cell status${cell}`}>{index + 1}</div>)
-      })
-    }
-  }
-
   render() {
+    const game = this.props.games[0] // change 0 to game index
+    const opponentName = game.players[0].name // change 0 to 1
+    const playerName = game.players[0].name
+    const opponentBoard = game.board[1]
+    const playerBoard = game.board[0]
+
     return (
       <div className="game">
-        <h1>Game</h1>
+        <h1>{game.title}</h1>
         <div className="board">
-          <h2>Opponent Grid</h2>
+          <h3>{opponentName}</h3>
           <div className="opponent-grid">
-            { this.renderGrid("two") }
+            <Grid board={opponentBoard} />
           </div>
         </div>
         <div className="board">
-          <h2>Your Grid</h2>
+          <h3>{playerName}</h3>
           <div className="player-grid">
-            { this.renderGrid("one") }
+            <Grid board={playerBoard} />
           </div>
         </div>
-
       </div>
     )
   }
 }
-export default Game
+
+const mapStateToProps = ({ games }) => ({ games })
+export default connect(mapStateToProps)(Game)
