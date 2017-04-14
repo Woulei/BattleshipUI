@@ -6,7 +6,7 @@ export default (gameId) => {
       service: 'games',
       method: UPDATE,
       authenticate: true,
-      params: { joinGame: 'true' },
+      params: { joinGame: 'false' },
       id: gameId,
     }
   }

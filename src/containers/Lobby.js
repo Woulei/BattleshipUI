@@ -6,9 +6,17 @@ import { Link } from 'react-router'
 import subscribeToGames from '../actions/games/subscribe'
 import createGame from '../actions/games/create'
 import joinGame from '../actions/games/join'
+import removeGame from '../actions/games/remove'
 import subscribeToUsers from '../actions/users/subscribe'
 import DirectionsBoat from 'material-ui/svg-icons/maps/directions-boat'
+import PersonAdd from 'material-ui/svg-icons/social/person-add'
+import Warning from 'material-ui/svg-icons/alert/warning'
+import NotInterested from 'material-ui/svg-icons/av/not-interested'
 import './Lobby.sass'
+
+const removeStyle = {
+  marginLeft: 10,
+};
 
 class Lobby extends PureComponent {
   componentWillMount() {
@@ -21,6 +29,7 @@ class Lobby extends PureComponent {
       label="Create Game"
       primary={true} />
   }
+
 
   render() {
     return (
@@ -45,23 +54,39 @@ class Lobby extends PureComponent {
                     <h4>{ game.title }</h4>
                     <div>
                       { game.playerIds.length < 2 && game.playerIds.indexOf(this.props.currentUser._id) === -1 &&
-
                           <RaisedButton
                           onClick={() => {this.props.joinGame(game._id)}}
                           label="Join the battle!"
                           labelPosition="before"
                           secondary={true}
-                          icon={<DirectionsBoat />} />
-                        
+                          icon={<PersonAdd />} />
                       }
-                      { game.playerIds.indexOf(this.props.currentUser._id) >= 0 &&
+                      { game.playerIds.length === 2 && game.playerIds.indexOf(this.props.currentUser._id) >= 0 &&
                         <Link to={"/game/" + `${game._id}`}>
                           <RaisedButton
                           label="Take command!"
                           labelPosition="before"
-                          primary={true}
+                          default={true}
+                          backgroundColor='dodgerblue'
+                          labelColor='white'
                           icon={<DirectionsBoat />} />
                         </Link>
+                      }
+                      { game.playerIds.indexOf(this.props.currentUser._id) >= 0 && game.playerIds.length < 2 &&
+                        <RaisedButton
+                        label="Waiting for an enemy to join the battle"
+                        labelPosition="before"
+                        disabled={true}
+                        icon={<Warning />} />
+                      }
+                      { game.playerIds.indexOf(this.props.currentUser._id) >= 0 &&
+                        <RaisedButton
+                        onClick={() => {this.props.removeGame(game._id)}}
+                        label="Leave the game"
+                        labelPosition="before"
+                        primary={true}
+                        style={ removeStyle }
+                        icon={<NotInterested />} />
                       }
                     </div>
                 </Paper>
@@ -75,4 +100,4 @@ class Lobby extends PureComponent {
 }
 
 const mapStateToProps = ({ games, currentUser }) => ({ games, currentUser })
-export default connect(mapStateToProps, { subscribeToGames, createGame, joinGame })(Lobby)
+export default connect(mapStateToProps, { subscribeToGames, createGame, joinGame, removeGame })(Lobby)
