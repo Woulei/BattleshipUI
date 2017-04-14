@@ -12,6 +12,7 @@ import DirectionsBoat from 'material-ui/svg-icons/maps/directions-boat'
 import PersonAdd from 'material-ui/svg-icons/social/person-add'
 import Warning from 'material-ui/svg-icons/alert/warning'
 import NotInterested from 'material-ui/svg-icons/av/not-interested'
+import ReactPlayer from 'react-player'
 import './Lobby.sass'
 
 const removeStyle = {
@@ -63,48 +64,56 @@ class Lobby extends PureComponent {
 
             { this.props.games.map((game, index) => {
               return (
-                <Paper key={index}
-                  zDepth={1}
-                  style={{ padding: '12px 24px' }}>
-                    <h4>{ game.title }</h4>
-                    <div>
-                      { game.playerIds.length < 2 && game.playerIds.indexOf(this.props.currentUser._id) === -1 &&
+                <div className="game-info">
+                  <Paper key={index}
+                    zDepth={1}
+                    style={paperStyle}>
+                      <h4>{ game.title }</h4>
+                      <div className="game-ctas">
+                        { game.playerIds.length < 2 && game.playerIds.indexOf(this.props.currentUser._id) === -1 &&
+                            <RaisedButton
+                            onClick={() => {this.props.joinGame(game._id)}}
+                            label="Join the battle!"
+                            labelPosition="before"
+                            secondary={true}
+                            icon={<PersonAdd />} />
+                        }
+                      </div>
+                      <div className="game-ctas">
+                        { game.playerIds.length === 2 && game.playerIds.indexOf(this.props.currentUser._id) >= 0 &&
+                          <Link to={"/game/" + `${game._id}`}>
+                            <RaisedButton
+                            label="Take command!"
+                            labelPosition="before"
+                            default={true}
+                            backgroundColor='dodgerblue'
+                            labelColor='white'
+                            icon={<DirectionsBoat />} />
+                          </Link>
+                        }
+                      </div>
+                      <div className="game-ctas">
+                        { game.playerIds.indexOf(this.props.currentUser._id) >= 0 && game.playerIds.length < 2 &&
                           <RaisedButton
-                          onClick={() => {this.props.joinGame(game._id)}}
-                          label="Join the battle!"
+                          label="Waiting for an enemy to join the battle"
                           labelPosition="before"
-                          secondary={true}
-                          icon={<PersonAdd />} />
-                      }
-                      { game.playerIds.length === 2 && game.playerIds.indexOf(this.props.currentUser._id) >= 0 &&
-                        <Link to={"/game/" + `${game._id}`}>
+                          disabled={true}
+                          icon={<Warning />} />
+                        }
+                      </div>
+                      <div className="game-ctas">
+                        { game.playerIds.indexOf(this.props.currentUser._id) >= 0 &&
                           <RaisedButton
-                          label="Take command!"
+                          onClick={() => {this.props.removeGame(game._id)}}
+                          label="Leave the game"
                           labelPosition="before"
-                          default={true}
-                          backgroundColor='dodgerblue'
-                          labelColor='white'
-                          icon={<DirectionsBoat />} />
-                        </Link>
-                      }
-                      { game.playerIds.indexOf(this.props.currentUser._id) >= 0 && game.playerIds.length < 2 &&
-                        <RaisedButton
-                        label="Waiting for an enemy to join the battle"
-                        labelPosition="before"
-                        disabled={true}
-                        icon={<Warning />} />
-                      }
-                      { game.playerIds.indexOf(this.props.currentUser._id) >= 0 &&
-                        <RaisedButton
-                        onClick={() => {this.props.removeGame(game._id)}}
-                        label="Leave the game"
-                        labelPosition="before"
-                        primary={true}
-                        style={ removeStyle }
-                        icon={<NotInterested />} />
-                      }
-                    </div>
-                </Paper>
+                          primary={true}
+                          style={ removeStyle }
+                          icon={<NotInterested />} />
+                        }
+                      </div>
+                  </Paper>
+                </div>
               )
             })}
           </div>
