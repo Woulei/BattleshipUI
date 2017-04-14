@@ -2,8 +2,12 @@ import React, { PureComponent } from 'react'
 import Paper from 'material-ui/Paper'
 import RaisedButton from 'material-ui/RaisedButton'
 import { connect } from 'react-redux'
+import { Link } from 'react-router'
 import subscribeToGames from '../actions/games/subscribe'
 import createGame from '../actions/games/create'
+import joinGame from '../actions/games/join'
+import subscribeToUsers from '../actions/users/subscribe'
+import DirectionsBoat from 'material-ui/svg-icons/maps/directions-boat'
 import './Lobby.sass'
 
 class Lobby extends PureComponent {
@@ -17,6 +21,7 @@ class Lobby extends PureComponent {
       label="Create Game"
       primary={true} />
   }
+
   render() {
     return (
       <div className="games lobby">
@@ -37,7 +42,19 @@ class Lobby extends PureComponent {
                 <Paper
                   zDepth={1}
                   style={{ padding: '12px 24px' }}>
-                  <h4>{ game.title }</h4>
+                    <h4>{ game.title }</h4>
+                    <div>
+                      { game.playerIds.length < 2 &&
+                        <Link to={"/game/" + `${game._id}`}>
+                          <RaisedButton
+                          onClick={() => {this.props.joinGame(game._id)}}
+                          label="Battle Now!"
+                          labelPosition="before"
+                          secondary={true}
+                          icon={<DirectionsBoat />} />
+                        </Link>
+                      }
+                    </div>
                 </Paper>
               )
             })}
@@ -49,4 +66,4 @@ class Lobby extends PureComponent {
 }
 
 const mapStateToProps = ({ games }) => ({ games })
-export default connect(mapStateToProps, { subscribeToGames, createGame })(Lobby)
+export default connect(mapStateToProps, { subscribeToGames, createGame, joinGame })(Lobby)
