@@ -33,14 +33,24 @@ class Navigation extends PureComponent {
     })
   }
 
+
+
   render() {
+
+    const appBarStyle = {
+      backgroundColor: 'transparent',
+      zDepth: 'none',
+      boxShadow: 'none'
+    }
+
     return (
       <div>
-        <AppBar
+        <AppBar style={appBarStyle}
           title="BattleShip"
           onLeftIconButtonTouchTap={this.toggleMenu.bind(this)}
           iconClassNameRight="muidocs-icon-navigation-expand-more"
           iconElementRight={ this.props.signedIn ? <FlatButton label="Sign Out" onClick={this.logOut.bind(this)} /> : null }
+          color="transparent"
         />
         <Drawer open={this.state.open}>
           <div style={{ paddingTop: 80 }}>

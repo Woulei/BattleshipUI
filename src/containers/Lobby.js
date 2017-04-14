@@ -35,8 +35,11 @@ class Lobby extends PureComponent {
     return (
       <div className="games lobby">
         <div className="video">
-          <ReactPlayer url='https://www.youtube.com/watch?v=RQK6hH5-nwU6'
-            playing width='100%' height='500'
+          <ReactPlayer url='https://youtu.be/RQK6hH5-nwU?t=39'
+            playing
+            width='100%'
+            height='500'
+            loop='true'
           />
         </div>
         <h1>Lobby</h1>
