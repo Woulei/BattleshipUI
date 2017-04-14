@@ -32,6 +32,13 @@ class Lobby extends PureComponent {
   }
 
   render() {
+
+    const paperStyle = {
+      padding: 48,
+      width: 400,
+      margin: '50px auto',
+    }
+
     return (
       <div className="games lobby">
         <div className="video">
@@ -42,7 +49,7 @@ class Lobby extends PureComponent {
             loop='true'
           />
         </div>
-        <h1>Lobby</h1>
+        <h1>BattleShip Lobby</h1>
 
         { this.props.games.length === 0 ?
           <div className="no-results">
