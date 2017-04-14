@@ -20,13 +20,13 @@ class Game extends PureComponent {
         <div className="board opponent">
           <h3>{opponentName}</h3>
           <div className="opponent-grid">
-            <Grid board={opponentBoard} />
+            <Grid board={opponentBoard} gameId={gameId} opponent={true} />
           </div>
         </div>
         <div className="board player">
           <h3>{playerName}</h3>
           <div className="player-grid">
-            <Grid board={playerBoard} />
+            <Grid board={playerBoard} gameId={gameId} opponent={false} />
           </div>
         </div>
       </div>
