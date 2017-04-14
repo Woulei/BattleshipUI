@@ -5,11 +5,14 @@ import Grid from './Grid'
 
 class Game extends PureComponent {
   render() {
-    const game = this.props.games[0] // change 0 to game index
-    const opponentName = game.players[0].name // change 0 to 1
-    const playerName = game.players[0].name
-    const opponentBoard = game.board[1]
-    const playerBoard = game.board[0]
+    const gameId = this.props.params.id
+    const game = this.props.games.filter((game) => {if (game._id === gameId) return game })[0]
+    const opponentIndex = (game.playerIds[0] === this.props.currentUser._id) ? 1 : 0
+    const playerIndex = (opponentIndex === 1) ? 0 : 1
+    const opponentName = game.players[opponentIndex].name // change 0 to 1
+    const playerName = game.players[playerIndex].name
+    const opponentBoard = game.board[opponentIndex]
+    const playerBoard = game.board[playerIndex]
 
     return (
       <div className="game">
@@ -31,5 +34,5 @@ class Game extends PureComponent {
   }
 }
 
-const mapStateToProps = ({ games }) => ({ games })
+const mapStateToProps = ({ games, currentUser }) => ({ games, currentUser })
 export default connect(mapStateToProps)(Game)
