@@ -8,6 +8,7 @@ const water = {
     color: 'white',
     height: '50px',
     minWidth: '50px',
+    maxWidth: '50px',
     borderRadius: '0px'
 }
 const waterhit = {
@@ -15,13 +16,15 @@ const waterhit = {
     color: 'white',
     height: '50px',
     minWidth: '50px',
+    maxWidth: '50px',
     borderRadius: '0px'
 }
 const ship = {
     backgroundColor: 'lightgrey',
-    color: 'white',
+    color: 'black',
     height: '50px',
     minWidth: '50px',
+    maxWidth: '50px',
     borderRadius: '0px'
 }
 const shiphit = {
@@ -29,6 +32,7 @@ const shiphit = {
     color: 'white',
     height: '50px',
     minWidth: '50px',
+    maxWidth: '50px',
     borderRadius: '0px'
 }
 
