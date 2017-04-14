@@ -58,7 +58,7 @@ class Lobby extends PureComponent {
           </div> :
           <div className="games list">
             <div className="actions">
-              { this.renderCreateGameButton() }
+              { this.renderCreateGameButton() } <strong>or join a game below</strong>
             </div>
 
             { this.props.games.map((game, index) => {
