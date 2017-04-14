@@ -28,7 +28,7 @@ const ship = {
     borderRadius: '0px'
 }
 const shiphit = {
-    backgroundColor: 'black',
+    backgroundColor: 'red',
     color: 'white',
     height: '50px',
     minWidth: '50px',
