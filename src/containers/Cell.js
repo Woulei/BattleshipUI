@@ -63,7 +63,6 @@ class Cell extends PureComponent {
   }
 
   render() {
-    console.log(this.props.opponent);
     return (
       <div>
         { this.renderButton() }
