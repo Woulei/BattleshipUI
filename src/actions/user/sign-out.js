@@ -10,10 +10,8 @@ export default (user) => {
   return (dispatch) =>{
     console.log('logging out user...')
     api.signOut(user)
-    .then((result) => {
-      dispatch(signedOutUser(user))
-      history.push('/users/sign-in')
-    })
+    dispatch(signedOutUser(user))
+    history.push('/users/sign-in')
   }
 }
 
