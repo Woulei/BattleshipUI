@@ -20,10 +20,10 @@ class Navigation extends PureComponent {
     this.state = { open: false }
   }
 
-  logOut() {
+  logOut(user) {
     event.preventDefault()
     console.log('logOut gets called');
-    this.props.signOut()
+    this.props.signOut(user)
   }
 
   toggleMenu() {
@@ -39,8 +39,7 @@ class Navigation extends PureComponent {
           title="BattleShip"
           onLeftIconButtonTouchTap={this.toggleMenu.bind(this)}
           iconClassNameRight="muidocs-icon-navigation-expand-more"
-          iconElementRight={ this.props.signedIn ?  <FlatButton label="Sign Out" onClick={this.logOut.bind(this)} /> : null }
-
+          iconElementRight={ this.props.signedIn ? <FlatButton label="Sign Out" onClick={this.logOut.bind(this)} /> : null }
         />
         <Drawer open={this.state.open}>
           <div style={{ paddingTop: 80 }}>
