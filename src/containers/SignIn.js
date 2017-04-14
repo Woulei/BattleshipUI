@@ -23,8 +23,9 @@ class SignIn extends PureComponent {
 
   render() {
     return (
+      <div className="game">
       <Paper style={{ padding: 48, width: 500, margin: '50px auto' }} zDepth={1}>
-        <h1>SignIn</h1>
+        <h1 style={{color: 'black'}}>SignIn</h1>
 
         <TextField fullWidth={true} ref="email" hintText="Your email address" errorText={this.state.emailError} />
         <TextField fullWidth={true} ref="password" type="password" hintText="Your password" errorText={this.state.passwordError} />
@@ -39,6 +40,7 @@ class SignIn extends PureComponent {
           <RaisedButton label="Sign In" primary={true} onClick={this.submitForm.bind(this)} />
         </div>
       </Paper>
+    </div>
     )
   }
 }
