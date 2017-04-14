@@ -111,8 +111,9 @@ class SignUp extends PureComponent {
 
   render() {
     return (
+      <div className="game">
       <Paper style={{ padding: 48, width: 500, margin: '50px auto' }} zDepth={1}>
-        <h1>SignUp</h1>
+        <h1 style={{ color: 'black'}}>SignUp</h1>
 
         <TextField fullWidth={true} ref="name" onChange={this.validateName.bind(this)} hintText="Your name..." errorText={this.state.nameError} />
         <TextField fullWidth={true} ref="email" onChange={this.validateEmail.bind(this)} hintText="Your email address" errorText={this.state.emailError} />
@@ -129,6 +130,7 @@ class SignUp extends PureComponent {
           <RaisedButton label="Sign Up" primary={true} onClick={this.submitForm.bind(this)} />
         </div>
       </Paper>
+    </div>
     )
   }
 }
