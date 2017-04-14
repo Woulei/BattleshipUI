@@ -19,6 +19,7 @@ const removeStyle = {
 };
 
 class Lobby extends PureComponent {
+
   componentWillMount() {
     this.props.subscribeToGames()
   }
@@ -30,10 +31,14 @@ class Lobby extends PureComponent {
       primary={true} />
   }
 
-
   render() {
     return (
       <div className="games lobby">
+        <div className="video">
+          <ReactPlayer url='https://www.youtube.com/watch?v=RQK6hH5-nwU6'
+            playing width='100%' height='500'
+          />
+        </div>
         <h1>Lobby</h1>
 
         { this.props.games.length === 0 ?
