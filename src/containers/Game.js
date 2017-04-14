@@ -17,13 +17,13 @@ class Game extends PureComponent {
     return (
       <div className="game">
         <h1>{game.title}</h1>
-        <div className="board">
+        <div className="board opponent">
           <h3>{opponentName}</h3>
           <div className="opponent-grid">
             <Grid board={opponentBoard} />
           </div>
         </div>
-        <div className="board">
+        <div className="board player">
           <h3>{playerName}</h3>
           <div className="player-grid">
             <Grid board={playerBoard} />
