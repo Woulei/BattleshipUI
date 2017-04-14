@@ -37,20 +37,29 @@ class Lobby extends PureComponent {
               { this.renderCreateGameButton() }
             </div>
 
-            { this.props.games.map((game) => {
+            { this.props.games.map((game, index) => {
               return (
-                <Paper
+                <Paper key={index}
                   zDepth={1}
                   style={{ padding: '12px 24px' }}>
                     <h4>{ game.title }</h4>
                     <div>
-                      { game.playerIds.length < 2 &&
-                        <Link to={"/game/" + `${game._id}`}>
+                      { game.playerIds.length < 2 && game.playerIds.indexOf(this.props.currentUser._id) === -1 &&
+
                           <RaisedButton
                           onClick={() => {this.props.joinGame(game._id)}}
-                          label="Battle Now!"
+                          label="Join the battle!"
                           labelPosition="before"
                           secondary={true}
+                          icon={<DirectionsBoat />} />
+                        
+                      }
+                      { game.playerIds.indexOf(this.props.currentUser._id) >= 0 &&
+                        <Link to={"/game/" + `${game._id}`}>
+                          <RaisedButton
+                          label="Take command!"
+                          labelPosition="before"
+                          primary={true}
                           icon={<DirectionsBoat />} />
                         </Link>
                       }
@@ -65,5 +74,5 @@ class Lobby extends PureComponent {
   }
 }
 
-const mapStateToProps = ({ games }) => ({ games })
+const mapStateToProps = ({ games, currentUser }) => ({ games, currentUser })
 export default connect(mapStateToProps, { subscribeToGames, createGame, joinGame })(Lobby)

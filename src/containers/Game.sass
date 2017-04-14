@@ -1,21 +1,32 @@
 .game
   width: 100%
+  height: 200%
   padding: 24px
+  background-image: url(https://images3.alphacoders.com/255/255067.jpg)
+  background-repeat: no-repeat
+  background-position: center 10px
+  background-size: cover
+  h1
+    text-align: center
 
-  .player-grid,
-  .opponent-grid
+  .board
+    display: inline
+    margin: 0px 20px
+    background-image: url('http://wiki.wargaming.net/skins/globalwiki/images/bg.jpg?2017-03-13T07:51:40Z')
+    border-radius: 10px
+    box-shadow: black 0px 0px 15px 0px
+    padding: 25px
+
+  .board.opponent
+      float: left
+
+  .board.player
+      float: right
+
+  .grid
     display: grid
     grid-template-columns: 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px
     grid-template-rows: 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px
-
-  .player-grid
     .cell
       text-align: center
       padding: 15px 0
-
-    .status1
-      background-color: #0000ff
-      color: #fff
-    .status3
-      background-color: #a9a9a9
-      color: #fff
