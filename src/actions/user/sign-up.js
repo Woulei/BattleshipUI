@@ -13,7 +13,7 @@ export default (user) => {
       dispatch(signIn(user))
     })
     .catch((error) => {
-      console.error('oops there has been an error')
+      console.error('oops there has been an error during signup', error)
     })
   }
 }
