@@ -1,7 +1,7 @@
 {
-  "name": "react-transform-boilerplate",
+  "name": "Battleship UI",
   "version": "1.0.0",
-  "description": "A new Webpack boilerplate with hot reloading React components, and error handling on module and component level.",
+  "description": "A simple version of the Battleship game",
   "scripts": {
     "clean": "rimraf dist",
     "build:webpack": "cross-env NODE_ENV=production webpack --config webpack.config.prod.js",
