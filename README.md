@@ -5,6 +5,8 @@ This is a simple React app build during the Codaisseur Academy. It has a very si
 
 The game itself has been build by us. Images and movies were found on the internet.
 
+You can visit a live version here: [Battleship Game](http://battleships-ui.bitballoon.com/)
+
 __NOTE:__ This was build during the Academy. If we would build it again, we might do it differently. Also the finishing touches were skipped due to the small amount of time available. The Battleship API and APP were build within less then 5 days by a team of 3 people. It might contain some minor bugs, and might see some features added later. ;-)
 
 ### ToDo's
