@@ -5,9 +5,9 @@ import feathers from 'feathers-client'
 class API {
   constructor() {
     // Establish a Socket.io connection
-    // const socket = io('http://battleshipsapi.codaisseur.cloud/')
     // const socket = io('http://localhost:3030')
     const socket = io('https://woulei-battleship-api.herokuapp.com/')
+
     // Initialize our Feathers client application through Socket.io
     // with hooks and authentication.
     this.app = feathers()
