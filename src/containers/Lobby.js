@@ -95,7 +95,7 @@ class Lobby extends PureComponent {
                       <div className="game-ctas">
                         { game.playerIds.indexOf(this.props.currentUser._id) >= 0 && game.playerIds.length < 2 &&
                           <RaisedButton
-                          label="Waiting for an enemy to join the battle"
+                          label="Waiting for enemy to join"
                           labelPosition="before"
                           disabled={true}
                           icon={<Warning />} />
