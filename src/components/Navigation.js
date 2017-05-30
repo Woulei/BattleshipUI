@@ -38,9 +38,8 @@ class Navigation extends PureComponent {
   render() {
 
     const appBarStyle = {
-      backgroundColor: 'transparent',
-      zDepth: 'none',
-      boxShadow: 'none'
+      backgroundColor: '#D32F2F',
+      zDepth: 'none'
     }
 
     return (
