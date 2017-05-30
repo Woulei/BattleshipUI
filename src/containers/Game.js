@@ -5,19 +5,25 @@ import Grid from './Grid'
 
 class Game extends PureComponent {
 
-  renderWinner(game, playerIndex) {
-    console.log("before winner", game.winner, typeof(game.winner));
+  renderStatus(game, playerIndex) {
     var winner = Number(game.winner)
-    console.log(winner, typeof(winner));
     if (winner >= 0) {
       if (winner === playerIndex) {
-        console.log("returning the player win");
         return (
           <h2 className="winner">"You won the game!"</h2>
         )
       }
-      console.log("returning the enemy win");
       return (<h2 className="winner">"The enemy has won"</h2>)
+    }
+
+    if (game.turn === this.props.currentUser._id) {
+      return (
+        <h2 className="winner">{"Please make your move"}</h2>
+      )
+    } else {
+      return (
+        <h2 className="winner">{"Wait for the opponent to make a move"}</h2>
+      )
     }
   }
 
@@ -34,7 +40,7 @@ class Game extends PureComponent {
     return (
       <div className="game">
         <h1>{game.title}</h1>
-        { this.renderWinner(game, playerIndex) }
+        { this.renderStatus(game, playerIndex) }
         <div className="board opponent">
           <h3>{opponentName}</h3>
           <div className="opponent-grid">

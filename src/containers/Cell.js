@@ -38,19 +38,23 @@ const shiphit = {
 
 class Cell extends PureComponent {
 
+  prepareMove(cellNumber, gameId) {
+    this.props.makeMove(cellNumber, gameId)
+  }
+
   renderButton() {
     const { value, cellIndex, opponent, gameId } = this.props
     const cellNumber = cellIndex + 1
     if (this.props.opponent) {
       switch(value) {
         case 1:
-          return (<FlatButton label={cellNumber} default={true} style={water} onClick={() => {this.props.makeMove(cellNumber, gameId)}} />)
+          return (<FlatButton label={cellNumber} default={true} style={water} onClick={() => {this.prepareMove(cellNumber, gameId)}} />)
         case 2:
-          return (<FlatButton label={cellNumber} disabled={true} style={waterhit} onClick={() => {this.props.makeMove(cellNumber, gameId)}} />)
+          return (<FlatButton label={cellNumber} disabled={true} style={waterhit} onClick={() => {this.prepareMove(cellNumber, gameId)}} />)
         case 3:
-          return (<FlatButton label={cellNumber} default={true} style={water} onClick={() => {this.props.makeMove(cellNumber, gameId)}} />)
+          return (<FlatButton label={cellNumber} default={true} style={water} onClick={() => {this.prepareMove(cellNumber, gameId)}} />)
         case 4:
-          return (<FlatButton label={cellNumber} disabled={true} style={shiphit} onClick={() => {this.props.makeMove(cellNumber, gameId)}} />)
+          return (<FlatButton label={cellNumber} disabled={true} style={shiphit} onClick={() => {this.prepareMove(cellNumber, gameId)}} />)
       }
     }
 
