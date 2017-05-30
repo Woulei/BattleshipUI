@@ -27,4 +27,9 @@ cp -r dist deploys/static
 cp index.html deploys/
 echo "done!"
 
-echo "Your build is ready to be deployed from ./deploys"
+echo "Deploying to Bitballoon"
+cd deploys/
+bitballoon deploy
+echo "done!"
+
+echo "The newest version has now been uploaded to Bitballoon"
