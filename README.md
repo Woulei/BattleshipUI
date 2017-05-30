@@ -11,7 +11,7 @@ __NOTE:__ This was build during the Academy. If we would build it again, we migh
 
 ### ToDo's
   * Fix the bugs
-  * Show who's turn it is
+  * ~~Show who's turn it is~~
   * Build a better, more visible api loading indicator
   * Make the player's choose where their ships will be on the grid
 ### Known bug's
