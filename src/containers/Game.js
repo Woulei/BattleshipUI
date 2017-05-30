@@ -15,6 +15,16 @@ class Game extends PureComponent {
       }
       return (<h2 className="winner">"The enemy has won"</h2>)
     }
+
+    if (game.turn === this.props.currentUser._id) {
+      return (
+        <h2 className="winner">"Please make your move"</h2>
+      )
+    } else {
+      return (
+        <h2 className="winner">"Wait for the opponent to make a move"</h2>
+      )
+    }
   }
 
   render() {
