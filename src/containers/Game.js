@@ -6,17 +6,13 @@ import Grid from './Grid'
 class Game extends PureComponent {
 
   renderWinner(game, playerIndex) {
-    console.log("before winner", game.winner, typeof(game.winner));
     var winner = Number(game.winner)
-    console.log(winner, typeof(winner));
     if (winner >= 0) {
       if (winner === playerIndex) {
-        console.log("returning the player win");
         return (
           <h2 className="winner">"You won the game!"</h2>
         )
       }
-      console.log("returning the enemy win");
       return (<h2 className="winner">"The enemy has won"</h2>)
     }
   }
