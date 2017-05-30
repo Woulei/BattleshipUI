@@ -5,7 +5,7 @@ import Grid from './Grid'
 
 class Game extends PureComponent {
 
-  renderWinner(game, playerIndex) {
+  renderStatus(game, playerIndex) {
     var winner = Number(game.winner)
     if (winner >= 0) {
       if (winner === playerIndex) {
@@ -30,7 +30,7 @@ class Game extends PureComponent {
     return (
       <div className="game">
         <h1>{game.title}</h1>
-        { this.renderWinner(game, playerIndex) }
+        { this.renderStatus(game, playerIndex) }
         <div className="board opponent">
           <h3>{opponentName}</h3>
           <div className="opponent-grid">
